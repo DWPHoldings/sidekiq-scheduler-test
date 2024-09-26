@@ -12,6 +12,8 @@ module SidekiqScheduler
       app.get '/recurring-jobs' do
         @presented_jobs = JobPresenter.build_collection(Sidekiq.schedule!)
 
+        puts "\n@presented_jobs: #{@presented_jobs}\n"
+
         erb File.read(File.join(VIEW_PATH, 'recurring_jobs.erb'))
       end
 
