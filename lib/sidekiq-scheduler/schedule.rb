@@ -73,6 +73,7 @@ module SidekiqScheduler
         get_all_schedules
       else
         encoded_schedule = SidekiqScheduler::RedisManager.get_job_schedule(name)
+        puts "\nencoded_schedule: #{encoded_schedule}\n"
         encoded_schedule.nil? ? nil : JSON.parse(encoded_schedule)
       end
     end
