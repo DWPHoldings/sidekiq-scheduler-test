@@ -73,7 +73,6 @@ module SidekiqScheduler
         get_all_schedules
       else
         encoded_schedule = SidekiqScheduler::RedisManager.get_job_schedule(name)
-        puts "\nencoded_schedule: #{encoded_schedule}\n"
         encoded_schedule.nil? ? nil : JSON.parse(encoded_schedule)
       end
     end
@@ -81,6 +80,8 @@ module SidekiqScheduler
     # gets the schedule as it exists in redis
     def get_all_schedules
       schedules = {}
+
+      puts "\nSidekiqScheduler::RedisManager.schedule_exist?: #{SidekiqScheduler::RedisManager.schedule_exist?}\n"
 
       if SidekiqScheduler::RedisManager.schedule_exist?
         SidekiqScheduler::RedisManager.get_all_schedules.tap do |h|
