@@ -65,7 +65,6 @@ module SidekiqScheduler
     # @return [Array<JobPresenter>] an array with the instances of presenters
     def self.build_collection(schedule_hash)
       schedule_hash ||= {}
-      puts "\nschedule_hash: #{schedule_hash}\n"
 
       schedule_hash.sort.map do |name, job_spec|
         new(name, job_spec)
